@@ -11,7 +11,6 @@ import {
   OperationMap,
 } from '../../types/operations';
 import { SourceMap } from '../../types/sources';
-import { AdvancedFilterQueryBuilder } from '../AdvancedFilterQueryBuilder';
 import { AdvancedGroupByQueryBuilder } from '../AdvancedGroupByQueryBuilder';
 import { AdvancedJoinQueryBuilder } from '../AdvancedJoinQueryBuilder';
 import { AdvancedSelectQueryBuilder } from '../AdvancedSelectQueryBuilder';
@@ -19,6 +18,7 @@ import { JsonModeSpec } from '../CodeMirrorReact';
 import { DataSourceSelector } from '../DataSourceSelector';
 import { QueryBuilderActionSelector } from '../QueryBuilderActionSelector';
 import { QuerySentencePreview } from '../QuerySentencePreview';
+import { JqueryQueryBuilder } from '../JqueryQueryBuilder/JqueryQueryBuilder';
 
 interface ComponentProps {
   operation?: OperationMap;
@@ -89,7 +89,7 @@ const QuerySentenceBuilder: FunctionComponent<ComponentProps> = (props) => {
             <StyledRow className={classNames({ 'd-none': !action })}>
               <Col lg={12}>
                 {action === 'select' ? <AdvancedSelectQueryBuilder source={source} /> : null}
-                {action === 'filter' ? <AdvancedFilterQueryBuilder source={source} /> : null}
+                {action === 'filter' ? <JqueryQueryBuilder /> : null}
                 {action === 'join' ? <AdvancedJoinQueryBuilder source={source} /> : null}
                 {action === 'groupby' ? <AdvancedGroupByQueryBuilder source={source} /> : null}
               </Col>
