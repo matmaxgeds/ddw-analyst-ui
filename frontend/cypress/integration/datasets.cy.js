@@ -209,7 +209,7 @@ describe('The Datasets Pages', () => {
       cy.intercept('/api/datasets/mine/?limit=10&offset=0&search=', datasets).as('datasets');
     });
     cy.fixture('datasetTableData').then((data) => {
-      cy.intercept('/api/dataset/data/346', data);
+      cy.intercept('/api/dataset/data/346/?limit=15&offset=0', data).as('datasetTableData');
     });
 
     // View dataset data in tabular form
@@ -222,7 +222,8 @@ describe('The Datasets Pages', () => {
           .contains('View Data')
           .click({ force: true })
           .then(() => {
-            cy.get('[data-testid="dataset-table-body"]').children().should('have.length', 15);
+            cy.wait('@datasetTableData');
+            cy.get('[data-testid="dataset-table-body"]').children().should('have.length', 10);
             cy.get('[data-testid="dataset-export-button"]').should('be.visible');
           });
       });
