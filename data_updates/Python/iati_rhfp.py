@@ -94,7 +94,7 @@ total_data['Code type'] = "Reproductive health care and family planning"
 
 data = data.groupby(["Year","recipient_name","country","Code type"]).agg({"disbursed":"sum"}).reset_index()
 
-data = data.append(pd.DataFrame(data = total_data),ignore_index=True)
+data = pd.concat([data, pd.DataFrame(data = total_data)],ignore_index=True)
 
 # Put it in millions
 
