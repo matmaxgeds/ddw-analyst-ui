@@ -134,7 +134,7 @@ recip_data = pd.concat([recip_data, recip_data3]).reset_index(drop=True)
 total_data = recip_data.groupby(["Donor Name","Recipient Name","Year"]).agg({"USD Disbursement Deflated":"sum"}).reset_index()
 total_data['Purpose Name'] = "Reproductive health care and family planning"
 
-recip_data = recip_data.append(pd.DataFrame(data = total_data),ignore_index=True)
+recip_data = pd.concat([recip_data, pd.DataFrame(data = total_data)], ignore_index=True)
 
 max_year = recip_data["Year"].max()
 
