@@ -160,12 +160,14 @@ merge_crs_tables = function(file_vec){
     "integer",
     "integer",
     "text",
+    "text",
     "integer",
     "text",
     "text",
     "text",
     "integer",
     "integer",
+    "text",
     "text",
     "integer",
     "text",
@@ -254,6 +256,7 @@ merge_crs_tables = function(file_vec){
   names(crs_field_types) = c(
     "year"
     ,"donor_code"
+    ,"donor_iso3_code" # New Apr 2024
     ,"donor_name"
     ,"agency_code"
     ,"agency_name"
@@ -261,6 +264,7 @@ merge_crs_tables = function(file_vec){
     ,"project_number"
     ,"initial_report"
     ,"recipient_code"
+    ,"recipient_iso3_code" # New Apr 2024
     ,"recipient_name"
     ,"region_code"
     ,"region_name"
